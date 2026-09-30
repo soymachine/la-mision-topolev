@@ -113,100 +113,100 @@ js/main.js        arranque, bucle, input
 ---
 
 ## FASE 1 — Esqueleto técnico
-- [ ] 1.1 `index.html` con canvas de mapa, canvas de FX y capas DOM
-- [ ] 1.2 `css/style.css`: tema negro/naranja, tipografía monoespaciada, CRT
-- [ ] 1.3 `util.js`: RNG mulberry32 con semilla, hash, ruido de valor + fBm, helpers
-- [ ] 1.4 Bucle `requestAnimationFrame`, redimensionado a pantalla completa
-- [ ] 1.5 Máquina de estados de pantallas (título, instrucciones, archivo, opciones, juego, estación, fin)
+- [x] 1.1 `index.html` con canvas de mapa, canvas de FX y capas DOM
+- [x] 1.2 `css/style.css`: tema negro/naranja, tipografía monoespaciada, CRT
+- [x] 1.3 `util.js`: RNG mulberry32 con semilla, hash, ruido de valor + fBm, helpers
+- [x] 1.4 Bucle `requestAnimationFrame`, redimensionado a pantalla completa
+- [x] 1.5 Máquina de estados de pantallas (título, instrucciones, archivo, opciones, juego, estación, fin)
 
 ## FASE 2 — Render ASCII
-- [ ] 2.1 Tabla de tiles con glifos/colores (`data.js`)
-- [ ] 2.2 Render de rejilla con cámara que sigue al jugador (lerp suave)
-- [ ] 2.3 Niebla de guerra: no visto / recordado (atenuado) / visible (luz con caída)
-- [ ] 2.4 Animación de tiles (magma, agua, gas, topolevita, uranio, cajas)
-- [ ] 2.5 Hormigón con autoconexión de caracteres de caja
-- [ ] 2.6 Rollover de celda (inversión) + regla de profundidad lateral
+- [x] 2.1 Tabla de tiles con glifos/colores (`data.js`)
+- [x] 2.2 Render de rejilla con cámara que sigue al jugador (lerp suave)
+- [x] 2.3 Niebla de guerra: no visto / recordado (atenuado) / visible (luz con caída)
+- [x] 2.4 Animación de tiles (magma, agua, gas, topolevita, uranio, cajas)
+- [x] 2.5 Hormigón con autoconexión de caracteres de caja
+- [x] 2.6 Rollover de celda (inversión) + regla de profundidad lateral
 
 ## FASE 3 — Generación procedural de horizontes
-- [ ] 3.1 Estratos por fBm con perfil por horizonte
-- [ ] 3.2 Cavernas por autómata celular
-- [ ] 3.3 Cantos rodados, agua y magma (asentados por simulación)
-- [ ] 3.4 Bolsas de gas, vetas de mineral por profundidad
-- [ ] 3.5 Bidones y cajas; sala de la estación; bordes de lecho
-- [ ] 3.6 Validación de accesibilidad + corredor de emergencia
-- [ ] 3.7 Cuota del horizonte según mineral disponible
-- [ ] 3.8 Horizonte final: La Cámara
+- [x] 3.1 Estratos por fBm con perfil por horizonte
+- [x] 3.2 Cavernas por autómata celular
+- [x] 3.3 Cantos rodados, agua y magma (asentados por simulación)
+- [x] 3.4 Bolsas de gas, vetas de mineral por profundidad
+- [x] 3.5 Bidones y cajas; sala de la estación; bordes de lecho
+- [x] 3.6 Validación de accesibilidad + corredor de emergencia
+- [x] 3.7 Cuota del horizonte según mineral disponible
+- [x] 3.8 Horizonte final: La Cámara
 
 ## FASE 4 — Núcleo jugable
-- [ ] 4.1 Jugador: mover, perforar (dureza/potencia/nivel), orientación
-- [ ] 4.2 Combustible, calor (ambiental, espera, agua, magma, uranio), casco
-- [ ] 4.3 Gravedad del Topolev (se agarra a paredes; cae en el vacío; daño por caída)
-- [ ] 4.4 Física de cantos (caer, rodar, aplastar, empujar)
-- [ ] 4.5 Física de agua + reacción agua/magma → obsidiana + vapor
-- [ ] 4.6 Gas y explosiones en cadena; dinamita
-- [ ] 4.7 Sonar (revelar, ruido, recarga)
-- [ ] 4.8 Recogida: mineral a bodega, bidones, cajas (botín)
-- [ ] 4.9 Visión con línea de visión, memoria de mapa
-- [ ] 4.10 Registro de mensajes
-- [ ] 4.11 Condiciones de derrota (casco, combustible, reprimendas)
+- [x] 4.1 Jugador: mover, perforar (dureza/potencia/nivel), orientación
+- [x] 4.2 Combustible, calor (ambiental, espera, agua, magma, uranio), casco
+- [x] 4.3 Gravedad del Topolev (se agarra a paredes; cae en el vacío; daño por caída)
+- [x] 4.4 Física de cantos (caer, rodar, aplastar, empujar)
+- [x] 4.5 Física de agua + reacción agua/magma → obsidiana + vapor
+- [x] 4.6 Gas y explosiones en cadena; dinamita
+- [x] 4.7 Sonar (revelar, ruido, recarga)
+- [x] 4.8 Recogida: mineral a bodega, bidones, cajas (botín)
+- [x] 4.9 Visión con línea de visión, memoria de mapa
+- [x] 4.10 Registro de mensajes
+- [x] 4.11 Condiciones de derrota (casco, combustible, reprimendas)
 
 ## FASE 5 — Amenazas
-- [ ] 5.1 Gusanos: despertar por ruido, BFS hacia el jugador, excavan, muerden
-- [ ] 5.2 Combate: embestir con la broca, cantos y explosiones les dañan
-- [ ] 5.3 Temblores (horizonte ≥ 4): derrumbes de techo
+- [x] 5.1 Gusanos: despertar por ruido, BFS hacia el jugador, excavan, muerden
+- [x] 5.2 Combate: embestir con la broca, cantos y explosiones les dañan
+- [x] 5.3 Temblores (horizonte ≥ 4): derrumbes de techo
 
 ## FASE 6 — HUD e interacción
-- [ ] 6.1 Panel lateral ASCII: horizonte, profundidad, barras animadas
-- [ ] 6.2 Bodega, módulos equipados, dinamita/sonar, plan quinquenal, registro
-- [ ] 6.3 Tooltips (rollover) en mapa, módulos, minerales, botones
-- [ ] 6.4 Clic en celda adyacente = actuar; clic lejano = autoruta (BFS por celdas vistas)
-- [ ] 6.5 Drag & drop de módulos en el HUD (equipar / reciclar en campo)
-- [ ] 6.6 Controles táctiles básicos (cruceta en pantalla)
+- [x] 6.1 Panel lateral ASCII: horizonte, profundidad, barras animadas
+- [x] 6.2 Bodega, módulos equipados, dinamita/sonar, plan quinquenal, registro
+- [x] 6.3 Tooltips (rollover) en mapa, módulos, minerales, botones
+- [x] 6.4 Clic en celda adyacente = actuar; clic lejano = autoruta (BFS por celdas vistas)
+- [x] 6.5 Drag & drop de módulos en el HUD (equipar / reciclar en campo)
+- [x] 6.6 Controles táctiles básicos (cruceta en pantalla)
 
 ## FASE 7 — Ítems procedurales
-- [ ] 7.1 Generador de módulos (tipo, rareza, stats por profundidad, nombre)
-- [ ] 7.2 Stats derivados (módulos + medallas)
-- [ ] 7.3 Efectos especiales de auxiliares (10 efectos)
-- [ ] 7.4 Botín de cajas
+- [x] 7.1 Generador de módulos (tipo, rareza, stats por profundidad, nombre)
+- [x] 7.2 Stats derivados (módulos + medallas)
+- [x] 7.3 Efectos especiales de auxiliares (10 efectos)
+- [x] 7.4 Botín de cajas
 
 ## FASE 8 — Estación Relé
-- [ ] 8.1 Pantalla de estación con telegrama (máquina de escribir)
-- [ ] 8.2 Drag & drop de minerales a MERCADO (vender) o PLAN (cuota)
-- [ ] 8.3 Servicios: reparar, repostar, comprar dinamita
-- [ ] 8.4 Tienda procedural (3 módulos) + taller drag & drop + reciclar
-- [ ] 8.5 Resolución de cuota: Orden (ventaja) o Reprimenda
-- [ ] 8.6 Descender: transición animada y nuevo horizonte
+- [x] 8.1 Pantalla de estación con telegrama (máquina de escribir)
+- [x] 8.2 Drag & drop de minerales a MERCADO (vender) o PLAN (cuota)
+- [x] 8.3 Servicios: reparar, repostar, comprar dinamita
+- [x] 8.4 Tienda procedural (3 módulos) + taller drag & drop + reciclar
+- [x] 8.5 Resolución de cuota: Orden (ventaja) o Reprimenda
+- [x] 8.6 Descender: transición animada y nuevo horizonte
 
 ## FASE 9 — Partículas y "juice"
-- [ ] 9.1 Sistema de partículas ASCII (espacio mundo y pantalla)
-- [ ] 9.2 Escombros, chispas, vapor, explosión, anillo de sonar, burbujas, ascuas
-- [ ] 9.3 Mineral volando al HUD, textos flotantes de daño/ganancia
-- [ ] 9.4 Sacudida de cámara, destellos, interpolación de cantos
-- [ ] 9.5 Hover de menús con chispas; transiciones de pantalla
+- [x] 9.1 Sistema de partículas ASCII (espacio mundo y pantalla)
+- [x] 9.2 Escombros, chispas, vapor, explosión, anillo de sonar, burbujas, ascuas
+- [x] 9.3 Mineral volando al HUD, textos flotantes de daño/ganancia
+- [x] 9.4 Sacudida de cámara, destellos, interpolación de cantos
+- [x] 9.5 Hover de menús con chispas; transiciones de pantalla
 
 ## FASE 10 — Meta y pantallas
-- [ ] 10.1 Pantalla de título con logo ASCII animado y fondo procedural
-- [ ] 10.2 Instrucciones (pestañas: misión, controles, recursos, subsuelo, estación, consejos)
-- [ ] 10.3 Archivo (récords) y Opciones
-- [ ] 10.4 Briefing inicial (telegrama)
-- [ ] 10.5 Game over (causa + estadísticas) y final (La Cámara)
-- [ ] 10.6 Semilla personalizada / expedición del día
+- [x] 10.1 Pantalla de título con logo ASCII animado y fondo procedural
+- [x] 10.2 Instrucciones (pestañas: misión, controles, recursos, subsuelo, estación, consejos)
+- [x] 10.3 Archivo (récords) y Opciones
+- [x] 10.4 Briefing inicial (telegrama)
+- [x] 10.5 Game over (causa + estadísticas) y final (La Cámara)
+- [x] 10.6 Semilla personalizada / expedición del día
 
 ## FASE 11 — Guardado
-- [ ] 11.1 Serializar/deserializar partida completa en localStorage
-- [ ] 11.2 Autoguardado (cada N turnos, estación, al cerrar pestaña)
-- [ ] 11.3 Continuar desde el título; permadeath borra la partida
-- [ ] 11.4 Récords y opciones persistentes
+- [x] 11.1 Serializar/deserializar partida completa en localStorage
+- [x] 11.2 Autoguardado (cada N turnos, estación, al cerrar pestaña)
+- [x] 11.3 Continuar desde el título; permadeath borra la partida
+- [x] 11.4 Récords y opciones persistentes
 
 ## FASE 12 — Audio
-- [ ] 12.1 Sintetizador WebAudio (perforar, pasos, recoger, explosión, sonar, daño, UI, teletipo)
-- [ ] 12.2 Opción de sonido y volumen
+- [x] 12.1 Sintetizador WebAudio (perforar, pasos, recoger, explosión, sonar, daño, UI, teletipo)
+- [x] 12.2 Opción de sonido y volumen
 
 ## FASE 13 — QA y balance
-- [ ] 13.1 Prueba automatizada con Playwright (arranque, sin errores de consola, capturas)
-- [ ] 13.2 Simulación de generación de 100 semillas × 10 horizontes (accesibilidad)
+- [x] 13.1 Prueba automatizada con Playwright (arranque, sin errores de consola, capturas)
+- [x] 13.2 Simulación de generación de 100 semillas × 10 horizontes (accesibilidad)
 - [ ] 13.3 Balance de economía y dificultad (primer ajuste hecho; requiere más partidas humanas)
-- [ ] 13.4 Rendimiento (render sólo del viewport)
+- [x] 13.4 Rendimiento (render sólo del viewport)
 
 ## FASE 14 — Documentación
 - [ ] 14.1 `README.md` (cómo jugar/ejecutar, sin spoilers)

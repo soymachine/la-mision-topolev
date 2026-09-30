@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>La Misión Topolev</title>
+<meta name="description" content="La Misión Topolev — un juego ASCII.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="game-layer">
+      <div id="map-wrap">
+        <canvas id="map"></canvas>
+      </div>
+      <aside id="hud"></aside>
+    </div>
+    <div id="touch"></div>
+    <div id="screen"></div>
+    <canvas id="fx"></canvas>
+    <div id="tooltip" class="hidden"></div>
+    <div id="drag-ghost" class="hidden"></div>
+    <div id="crt"></div>
+  </div>
+
+  <script src="js/util.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/items.js"></script>
+  <script src="js/gen.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/save.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/screens.js"></script>
+  <script src="js/station.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

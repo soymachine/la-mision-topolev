@@ -1,0 +1,145 @@
+/* ==========================================================
+   LA MISIÓN TOPOLEV — hoja de estilos
+   Todo lo visible es texto monoespaciado; el CSS sólo pone
+   colores, capas y animaciones sutiles.
+   ========================================================== */
+:root {
+  --bg: #070504;
+  --bg2: #0f0906;
+  --bg3: #1a0f07;
+  --or: #ff8c1a;      /* naranja principal */
+  --or-l: #ffb347;    /* naranja claro */
+  --or-xl: #ffd59a;   /* casi blanco cálido */
+  --or-d: #c25a0e;    /* naranja oscuro */
+  --or-dd: #6e3108;   /* óxido */
+  --or-ddd: #3a1a06;  /* brasa apagada */
+  --red: #ff3b30;
+  --cyan: #4de8ff;
+  --green: #8cff3c;
+  --blue: #5fb4e8;
+  --gold: #ffd23f;
+  --grey: #a79c92;
+  --purple: #b58cff;
+  --fs: 15px;
+  --font: 'JetBrains Mono', 'DejaVu Sans Mono', 'Consolas', 'Menlo', monospace;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0; width: 100%; height: 100%;
+  background: var(--bg); color: var(--or);
+  font-family: var(--font); font-size: var(--fs);
+  overflow: hidden; user-select: none; -webkit-user-select: none;
+  touch-action: none;
+}
+#app { position: fixed; inset: 0; overflow: hidden; }
+
+/* ---------- capa de juego ---------- */
+#game-layer { position: absolute; inset: 0; display: flex; }
+#game-layer.hidden { display: none; }
+#map-wrap { position: relative; flex: 1 1 auto; min-width: 0; overflow: hidden; }
+#map { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#hud {
+  flex: 0 0 auto; height: 100%; overflow: hidden;
+  background: var(--bg); padding: 6px 8px 6px 0;
+  line-height: 1.18;
+}
+#fx { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
+#crt {
+  position: fixed; inset: 0; pointer-events: none; z-index: 80;
+  background:
+    repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px, rgba(0,0,0,.22) 3px),
+    radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%);
+  animation: flicker 5s infinite steps(1);
+}
+#crt.off { display: none; }
+@keyframes flicker {
+  0% { opacity: .92 } 7% { opacity: .85 } 8% { opacity: .95 } 40% { opacity: .9 }
+  41% { opacity: .82 } 42% { opacity: .92 } 80% { opacity: .9 } 100% { opacity: .92 }
+}
+
+/* ---------- líneas ASCII ---------- */
+.ln { white-space: pre; display: block; min-height: 1.18em; }
+.box { display: block; }
+.fr { color: var(--or-dd); }            /* marco */
+.frt { color: var(--or); font-weight: 700; } /* título de marco */
+.dim { color: var(--or-dd); }
+.dd { color: var(--or-ddd); }
+.mid { color: var(--or-d); }
+.hi { color: var(--or-l); }
+.xhi { color: var(--or-xl); }
+.b { font-weight: 700; }
+.red { color: var(--red); }
+.cyan { color: var(--cyan); }
+.green { color: var(--green); }
+.blue { color: var(--blue); }
+.gold { color: var(--gold); }
+.grey { color: var(--grey); }
+.purple { color: var(--purple); }
+.blink { animation: blink 1s infinite steps(1); }
+@keyframes blink { 50% { opacity: .15 } }
+.pulse { animation: pulse 1.6s infinite ease-in-out; }
+@keyframes pulse { 50% { opacity: .55 } }
+
+/* interactivos */
+.btn { cursor: pointer; color: var(--or-l); transition: background-color .08s, color .08s; }
+.btn:hover, .btn.focus { background: var(--or); color: #000; }
+.btn.dis { color: var(--or-dd); cursor: not-allowed; }
+.btn.dis:hover { background: transparent; color: var(--or-dd); }
+.btn.danger:hover { background: var(--red); color: #000; }
+.hov { cursor: help; }
+.hov:hover { background: var(--or-ddd); color: var(--or-xl); }
+.drag { cursor: grab; }
+.drag:hover { background: var(--or-ddd); outline: 1px dashed var(--or-d); }
+.drag.dragging { opacity: .25; }
+.drop { transition: background-color .1s; }
+.drop.over { background: rgba(255,140,26,.14); }
+.drop.over .fr { color: var(--or); }
+.drop.over.bad { background: rgba(255,59,48,.14); }
+
+/* ---------- tooltip y fantasma de arrastre ---------- */
+#tooltip {
+  position: fixed; z-index: 60; pointer-events: none;
+  background: rgba(7,5,4,.96); line-height: 1.2;
+  box-shadow: 0 0 22px rgba(255,140,26,.12);
+}
+#tooltip.hidden, #drag-ghost.hidden { display: none; }
+#drag-ghost {
+  position: fixed; z-index: 70; pointer-events: none;
+  background: var(--bg); line-height: 1.18;
+  box-shadow: 0 0 26px rgba(255,140,26,.35);
+  transform: rotate(-2deg);
+}
+
+/* ---------- pantallas ---------- */
+#screen {
+  position: absolute; inset: 0; z-index: 30; display: flex;
+  align-items: center; justify-content: center; overflow: auto;
+  background: rgba(7,5,4,.0);
+}
+#screen:empty { display: none; }
+#screen.opaque { background: var(--bg); }
+#screen.veil { background: rgba(7,5,4,.93); }
+.scr { position: relative; line-height: 1.2; animation: scrIn .25s ease-out; }
+@keyframes scrIn { from { opacity: 0; transform: translateY(6px); filter: blur(2px) } to { opacity: 1; transform: none; filter: none } }
+
+#title-bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.logo { white-space: pre; line-height: 1.0; font-weight: 800; text-align: left; }
+.logo span { transition: color .2s; }
+.menu .ln { text-align: left; }
+.center { text-align: center; }
+
+/* ---------- cruceta táctil ---------- */
+#touch { position: absolute; left: 10px; bottom: 10px; z-index: 20; display: none; }
+#touch.on { display: block; }
+#touch .tb {
+  display: inline-block; width: 3.2em; height: 2.4em; line-height: 2.4em;
+  text-align: center; margin: 2px; background: rgba(7,5,4,.75);
+  color: var(--or); border: 0; font-family: var(--font);
+}
+#touch .tb:active { background: var(--or); color: #000; }
+
+/* scrollbars discretos */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--or-dd); }
+::-webkit-scrollbar-track { background: var(--bg); }
