@@ -25,6 +25,7 @@ const OUT = path.join(__dirname, '..', 'shots');
     const s = G.map.station; G.p.x = s.x; G.p.y = s.y - 1; TP.W.act(0, 1);
   });
   await p.waitForTimeout(3000);
+  await p.keyboard.press('x'); await p.waitForTimeout(200);
   await p.screenshot({ path: OUT + '/07-station.png' });
   // arrastrar cobre al plan
   const src = await p.$('[data-drag="ore:copper"]'); const dst = await p.$('[data-drop="quota"]');

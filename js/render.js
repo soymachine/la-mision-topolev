@@ -41,10 +41,14 @@
       R.cw = Math.ceil(TP.charWidth(R.font));
       R.rulerW = R.cw * 9;
     };
+    R.narrow = w < 700;
+    if (R.narrow) ch = TP.clamp(Math.floor(h / 19), 18, 40);
     fit();
-    while (ch > 12 && R.cw * TP.CFG.MAP_W + R.rulerW > w - 8) { ch--; fit(); }
+    if (R.narrow) R.rulerW = 0;
+    else while (ch > 12 && R.cw * TP.CFG.MAP_W + R.rulerW > w - 8) { ch--; fit(); }
     R.ox = Math.max(R.rulerW, Math.floor((w - R.cw * TP.CFG.MAP_W) / 2 + R.rulerW / 2));
     if (R.ox + R.cw * TP.CFG.MAP_W > w) R.ox = R.rulerW;
+    R.scrollX = R.cw * TP.CFG.MAP_W + R.ox > w;
     R.oy = 0;
   };
 
@@ -64,6 +68,7 @@
     const G = TP.G; if (!G) return;
     R.pv.x = G.p.x; R.pv.y = G.p.y;
     R.cam.y = R.cam.ty = camTarget();
+    R.cam.x = R.scrollX ? TP.clamp(G.p.x * R.cw - R.viewW / 2, 0, G.map.w * R.cw - R.viewW + R.ox) : 0;
   };
   function camTarget() {
     const G = TP.G, mh = G.map.h * R.ch;
@@ -106,7 +111,11 @@
     if (Math.abs(G.p.x - R.pv.x) > 6 || Math.abs(G.p.y - R.pv.y) > 12) { R.pv.x = G.p.x; R.pv.y = G.p.y; }
     R.cam.ty = camTarget();
     R.cam.y += (R.cam.ty - R.cam.y) * Math.min(1, k);
-    R.cam.x = 0;
+    if (R.scrollX) {
+      const mw = G.map.w * cw;
+      const tx = TP.clamp(R.pv.x * cw + cw / 2 - R.viewW / 2, 0, mw - R.viewW + R.ox);
+      R.cam.x += (tx - R.cam.x) * Math.min(1, k);
+    } else R.cam.x = 0;
 
     let sx = 0, sy = 0;
     if (R.shake > 0.1) { sx = (Math.random() - 0.5) * R.shake; sy = (Math.random() - 0.5) * R.shake; R.shake *= 0.88; } else R.shake = 0;
@@ -114,7 +123,7 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.fillStyle = '#070504';
     ctx.fillRect(0, 0, R.viewW, R.viewH);
-    ctx.translate(Math.round(sx), Math.round(sy));
+    ctx.translate(Math.round(sx - R.cam.x), Math.round(sy));
 
     const camY = R.cam.y;
     const y0 = Math.max(0, Math.floor(camY / ch) - 1), y1 = Math.min(m.h - 1, Math.ceil((camY + R.viewH) / ch) + 1);
@@ -123,7 +132,7 @@
     ctx.textBaseline = 'middle';
 
     // regla de profundidad
-    drawRuler(ctx, y0, y1, camY);
+    if (R.rulerW) drawRuler(ctx, y0, y1, camY);
 
     // animaciones de cantos activas
     const animMap = {};
@@ -317,6 +326,7 @@
       ctx.font = R.font + 'px ' + getFont();
     }
 
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     // destello
     if (R.flash > 0.01) {
       ctx.fillStyle = cstr(R.flashCol, R.flash);

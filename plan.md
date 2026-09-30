@@ -205,11 +205,11 @@ js/main.js        arranque, bucle, input
 ## FASE 13 — QA y balance
 - [x] 13.1 Prueba automatizada con Playwright (arranque, sin errores de consola, capturas)
 - [x] 13.2 Simulación de generación de 100 semillas × 10 horizontes (accesibilidad)
-- [ ] 13.3 Balance de economía y dificultad (primer ajuste hecho; requiere más partidas humanas)
+- [~] 13.3 Balance de economía y dificultad (primer ajuste hecho; requiere más partidas humanas)
 - [x] 13.4 Rendimiento (render sólo del viewport)
 
 ## FASE 14 — Documentación
-- [ ] 14.1 `README.md` (cómo jugar/ejecutar, sin spoilers)
+- [x] 14.1 `README.md` (cómo jugar/ejecutar, sin spoilers)
 
 ---
 
@@ -219,3 +219,16 @@ js/main.js        arranque, bucle, input
 - [ ] Artefactos de lore coleccionables (cintas de audio)
 - [ ] Logros / desbloqueos entre partidas
 - [ ] Música generativa
+
+---
+
+## Registro de sesiones
+- **Sesión 1**: plan completo; fases 1–12 implementadas; pruebas automáticas
+  (`tools/`): generación (0 mapas inaccesibles en 600), mecánicas (19/19),
+  simulación con bot y capturas con Playwright (sin errores de consola).
+  Ajustes de balance: coste de combustible (perforar 0,7 · mover 0,6 · subir 1,4),
+  asignación estatal de +40 combustible en cada estación, daño por caída 4/fila,
+  visión 6 y la luz atraviesa una capa de roca. Diseño responsive para móvil
+  (HUD arriba con scroll, cámara con seguimiento horizontal).
+- **Pendiente para próximas sesiones**: más partidas humanas para ajustar la
+  curva de dificultad de los horizontes VI–X (basalto + magma), y el backlog.

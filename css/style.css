@@ -143,3 +143,11 @@ html, body {
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-thumb { background: var(--or-dd); }
 ::-webkit-scrollbar-track { background: var(--bg); }
+
+/* ---------- pantallas estrechas (móvil en vertical) ---------- */
+#game-layer.narrow { flex-direction: column; }
+#game-layer.narrow #hud {
+  order: -1; height: auto; max-height: 38vh; overflow-y: auto; padding: 4px;
+  border-bottom: 1px solid var(--or-ddd);
+}
+#game-layer.narrow #map-wrap { flex: 1 1 auto; }

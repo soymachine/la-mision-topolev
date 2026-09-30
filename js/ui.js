@@ -12,7 +12,9 @@
     const hud = $('#hud');
     const w = window.innerWidth, h = window.innerHeight;
     const lines = 50;
-    let fs = Math.min(17, Math.floor(h / (lines * 1.18)), Math.floor((w * 0.36) / (UI.HW * 0.61)));
+    const narrow = w < 820 && h > w;
+    $('#game-layer').classList.toggle('narrow', narrow);
+    let fs = narrow ? Math.floor((w - 10) / (UI.HW * 0.61)) : Math.min(17, Math.floor(h / (lines * 1.18)), Math.floor((w * 0.36) / (UI.HW * 0.61)));
     fs = Math.max(9, fs);
     hud.style.fontSize = fs + 'px';
     UI.hudFs = fs;

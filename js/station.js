@@ -13,6 +13,7 @@
       scr.className = 'veil';
       TP.W.stationEnter();
       this.tgN = TP.G._tgShown === TP.G.h ? 1e9 : 0;
+      this._drawn = false;
       this.draw();
       SC_anim(this);
     },
@@ -121,7 +122,9 @@
 
       const pad = (arr, n) => { while (arr.length < n) arr.push(' '); return arr; };
       const midH = 8;
-      let h = '<div class="scr st" style="font-size:' + (TP.UI.hudFs ? Math.min(TP.UI.hudFs + 1, 16) : 14) + 'px">';
+      const anim = this._drawn ? 'animation:none;' : '';
+      this._drawn = true;
+      let h = '<div class="scr st" style="' + anim + 'font-size:' + (TP.UI.hudFs ? Math.min(TP.UI.hudFs + 1, 16) : 14) + 'px">';
       h += TP.box({ w: W, style: 'd', title: 'ESTACIÓN RELÉ Nº ' + (G.h + 1) + ' · ' + TP.fmt(TP.W.depthM(G.map.station.y)) + ' m', right: 'ТЕЛЕГРАММА', lines: [' ', ...tgLines, ' '] });
       h += '<div style="display:flex">';
       h += TP.box({ w: c3, title: 'BODEGA ' + TP.W.cargoUsed() + '/' + st.cargo, lines: pad(bod, midH) });
@@ -246,7 +249,7 @@
       else if (drop === 'scrap') { const msg = W.scrap(id); if (msg) TP.P.floatText(x, y, msg.toUpperCase(), '#ffd23f', 'screen'); }
     }
     TP.UI.hideTip();
-    if (SC.cur && SC.cur.name === 'station') ST.draw();
+    if (SC.cur && SC.cur.name === 'station') SC.cur.draw();
     TP.UI.renderHUD();
   };
 

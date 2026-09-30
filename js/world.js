@@ -56,6 +56,7 @@
     G.p.hull = st.hullMax; G.p.fuel = st.fuelMax;
     W.loadHorizon(0);
     log('KT-1 «Topolev» en posición. Semilla ' + seed + '.', 'hi');
+    log('Flechas: mover/perforar. Pasa el ratón por el mapa para analizar la roca.', 'dim');
     return G;
   };
 
